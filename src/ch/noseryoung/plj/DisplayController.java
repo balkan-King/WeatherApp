@@ -1,20 +1,22 @@
 package ch.noseryoung.plj;
 
+import java.util.Scanner;
+
 public class DisplayController {
 
-    private CurrentDisplay currentDisplay;
-    private ForecastDisplay forecastDisplay;
-    private StatisticsDisplay statisticsDisplay;
-    private CurrentData currentData;
+    private CurrentDisplay currentDisplay = new CurrentDisplay();
+    private ForecastDisplay forecastDisplay = new ForecastDisplay();
+    private StatisticsDisplay statisticsDisplay = new StatisticsDisplay();
+    private CurrentData currentData = CurrentData.getInstance();
 
-    public void DisplayController(){
-        this.currentDisplay = new CurrentDisplay();
-        this.forecastDisplay = new ForecastDisplay();
-        this.statisticsDisplay = new StatisticsDisplay();
-        this.currentData = CurrentData.getInstance();
+    public DisplayController(){
+        currentData.registerPropertyChangeListener(currentDisplay);
+        currentData.registerPropertyChangeListener(forecastDisplay);
+        currentData.registerPropertyChangeListener(statisticsDisplay);
     }
 
     public void showMenu(){
+        System.out.println("\n".repeat(10));
         System.out.println("Select which option you'd like to use\n" +
                 "[1] to display the current data\n" +
                 "[2] to display the forecast\n" +
@@ -25,6 +27,8 @@ public class DisplayController {
     }
 
     public void switchCase(String entry){
+        Scanner inputValue = new Scanner(System.in);
+
         switch(entry.toLowerCase()){
             case "1":
                 currentDisplay.display();
@@ -44,6 +48,8 @@ public class DisplayController {
             case "x":
                 break;
         }
+        System.out.println("Enter to continue");
+        inputValue.nextLine();
     }
 
 }

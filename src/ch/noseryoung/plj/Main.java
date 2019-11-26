@@ -13,7 +13,7 @@ public class Main {
             displayController.showMenu();
             entry = inputValue.nextLine();
             displayController.switchCase(entry);
-        }while(("x").equals(entry.toLowerCase()));
+        }while(!("x").equals(entry.toLowerCase()));
 
     }
 }
