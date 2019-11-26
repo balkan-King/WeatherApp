@@ -7,10 +7,10 @@ public class CurrentData {
 
 
     //constructor
-    public CurrentData(Double currentTemperature, Double currentPressure, int currentHunmidity) {
+    public CurrentData(Double currentTemperature, Double currentPressure, int currentHumidity) {
         this.currentTemperature = currentTemperature;
         this.currentPressure = currentPressure;
-        this.currentHunmidity = currentHunmidity;
+        this.currentHunmidity = currentHumidity;
     }
 
 
@@ -27,8 +27,10 @@ public class CurrentData {
 
     }
 
-    public void measurementsChanged(){
-
+    public void measurementsChanged(Double currentTemperature, Double currentPressure, int currentHumidity){
+        this.currentTemperature = currentTemperature;
+        this.currentPressure = currentPressure;
+        this.currentHunmidity = currentHumidity;
     }
 
 
