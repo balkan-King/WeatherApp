@@ -1,16 +1,21 @@
 package ch.noseryoung.plj;
 
 public class CurrentData {
-    Double currentTemperature;
-    Double currentPressure;
-    int currentHunmidity;
+    private static Double currentTemperature;
+    private static Double currentPressure;
+    private static int currentHunmidity;
+    private static CurrentData instance;
 
 
     //constructor
-    public CurrentData(Double currentTemperature, Double currentPressure, int currentHumidity) {
-        this.currentTemperature = currentTemperature;
-        this.currentPressure = currentPressure;
-        this.currentHunmidity = currentHumidity;
+    private CurrentData() {
+    }
+    //Singleton
+    public static CurrentData getInstance(){
+        if (CurrentData.instance == null) {
+            CurrentData.instance = new CurrentData ();
+        }
+        return CurrentData.instance;
     }
 
 
@@ -24,6 +29,10 @@ public class CurrentData {
     }
 
     public void notifyObserver(){
+
+    }
+
+    public void changeForm(){
 
     }
 
