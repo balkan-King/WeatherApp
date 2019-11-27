@@ -1,9 +1,6 @@
 package ch.noseryoung.plj;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
-public class StatisticsDisplay implements Displayable, PropertyChangeListener {
+public class StatisticsDisplay implements Displayable, MyPropertyChangeListener {
 
     private Double minTemperature;
     private Double maxTemperature;
@@ -18,15 +15,15 @@ public class StatisticsDisplay implements Displayable, PropertyChangeListener {
 
     @Override
     public void display() {
-        System.out.println("Temperature today:\t\t\tPressure today:\t\t\tHumidity today:\n" +
-                "------------------\t\t\t---------------\n" +
+        System.out.println("Temperature today:\t\t\tPressure today:\t\t\t\tHumidity today:\n" +
+                "------------------\t\t\t---------------\t\t\t\t---------------\n" +
                 "minimum: " + minTemperature + " °C\t\t\tminimum: " + minPressure + " kPa\t\t\tminimum: " + minHumidity + "%\n" +
                 "maximum: " + maxTemperature + " °C\t\t\tmaximum: " + maxPressure + " kPa\t\t\tmaximum: " + maxHumidity + "%\n" +
                 "average: " + averageTemperature + " °C\t\t\taverage: " + averagePressure + " kPa\t\t\taverage " + averageHumidity + "%\n");
     }
 
     @Override
-    public void propertyChange(PropertyChangeEvent evt) {
+    public void update() {
         changeTemperature();
         changePressure();
         changeHumidity();

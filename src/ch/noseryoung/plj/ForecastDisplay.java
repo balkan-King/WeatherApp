@@ -1,9 +1,6 @@
 package ch.noseryoung.plj;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
-public class ForecastDisplay implements Displayable, PropertyChangeListener {
+public class ForecastDisplay implements Displayable, MyPropertyChangeListener {
 
     @Override
     public void display() {
@@ -11,7 +8,8 @@ public class ForecastDisplay implements Displayable, PropertyChangeListener {
     }
 
     @Override
-    public void propertyChange(PropertyChangeEvent evt) {
+    public void update() {
 
     }
+
 }

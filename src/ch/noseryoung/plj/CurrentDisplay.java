@@ -1,9 +1,6 @@
 package ch.noseryoung.plj;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
-public class CurrentDisplay implements Displayable, PropertyChangeListener {
+public class CurrentDisplay implements Displayable, MyPropertyChangeListener {
 
     private Double temperature;
     private Double pressure;
@@ -22,7 +19,7 @@ public class CurrentDisplay implements Displayable, PropertyChangeListener {
     }
 
     @Override
-    public void propertyChange(PropertyChangeEvent evt) {
+    public void update() {
         temperature = CurrentData.getInstance().getCurrentTemperature();
         pressure = CurrentData.getInstance().getCurrentPressure();
         humidity = CurrentData.getInstance().getCurrentHumidity();
