@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class CurrentData {
     private static Double currentTemperature;
     private static Double currentPressure;
-    private static int currentHumidity;
+    private static Integer currentHumidity;
     private static CurrentData instance;
     private MyPropertyChangeSupport support = new MyPropertyChangeSupport(); //Observer
 
@@ -14,6 +14,7 @@ public class CurrentData {
     private CurrentData() {
         currentTemperature = 0.0;
         currentPressure = 0.0;
+        currentHumidity = 0;
     }
     //Singleton
     public static CurrentData getInstance(){
@@ -76,10 +77,6 @@ public class CurrentData {
 
     public MyPropertyChangeSupport getSupport() {
         return support;
-    }
-
-    public void setSupport(MyPropertyChangeSupport support) {
-        this.support = support;
     }
 
     public void setCurrentTemperature(Double currentTemperature) {

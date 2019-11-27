@@ -15,11 +15,14 @@ public class StatisticsDisplay implements Displayable, MyPropertyChangeListener 
 
     @Override
     public void display() {
+        if(maxTemperature != null)
         System.out.println("Temperature today:\t\t\tPressure today:\t\t\t\tHumidity today:\n" +
                 "------------------\t\t\t---------------\t\t\t\t---------------\n" +
                 "minimum: " + minTemperature + " °C\t\t\tminimum: " + minPressure + " kPa\t\t\tminimum: " + minHumidity + "%\n" +
                 "maximum: " + maxTemperature + " °C\t\t\tmaximum: " + maxPressure + " kPa\t\t\tmaximum: " + maxHumidity + "%\n" +
                 "average: " + averageTemperature + " °C\t\t\taverage: " + averagePressure + " kPa\t\t\taverage " + averageHumidity + "%\n");
+        else
+            System.out.println("There are no values set yet");
     }
 
     @Override
