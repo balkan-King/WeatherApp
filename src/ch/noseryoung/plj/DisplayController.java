@@ -52,4 +52,19 @@ public class DisplayController {
         inputValue.nextLine();
     }
 
+    public CurrentDisplay getCurrentDisplay() {
+        return currentDisplay;
+    }
+
+    public ForecastDisplay getForecastDisplay() {
+        return forecastDisplay;
+    }
+
+    public StatisticsDisplay getStatisticsDisplay() {
+        return statisticsDisplay;
+    }
+
+    public CurrentData getCurrentData() {
+        return currentData;
+    }
 }
