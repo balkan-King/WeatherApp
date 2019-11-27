@@ -12,8 +12,10 @@ public class MyPropertyChangeSupport {
 
     public void removePropertyChangeListener(MyPropertyChangeListener property){
         for(MyPropertyChangeListener myPropertyChangeListener : propertyChangeListeners){
-            if(property == myPropertyChangeListener)
+            if(property == myPropertyChangeListener) {
                 propertyChangeListeners.remove(myPropertyChangeListener);
+                break;
+            }
         }
     }
 
@@ -21,5 +23,9 @@ public class MyPropertyChangeSupport {
         for(MyPropertyChangeListener myPropertyChangeListener : propertyChangeListeners){
             myPropertyChangeListener.update();
         }
+    }
+
+    public int size(){
+        return propertyChangeListeners.size();
     }
 }

@@ -29,7 +29,7 @@ public class CurrentData {
         support.addPropertyChangeListener(p);
     }
 
-    public void removeObserver(MyPropertyChangeListener p){
+    public void removePropertyChangeListener(MyPropertyChangeListener p){
         support.removePropertyChangeListener(p);
     }
 
@@ -74,15 +74,28 @@ public class CurrentData {
         return currentHumidity;
     }
 
+    public MyPropertyChangeSupport getSupport() {
+        return support;
+    }
+
+    public void setSupport(MyPropertyChangeSupport support) {
+        this.support = support;
+    }
+
     public void setCurrentTemperature(Double currentTemperature) {
         this.currentTemperature = currentTemperature;
+        support.firePropertyChange();
     }
 
     public void setCurrentPressure(Double currentPressure) {
         this.currentPressure = currentPressure;
+        support.firePropertyChange();
     }
 
     public void setCurrentHumidity(int currentHunmidity) {
         this.currentHumidity = currentHunmidity;
+        support.firePropertyChange();
     }
+
+
 }

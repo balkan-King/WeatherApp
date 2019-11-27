@@ -6,7 +6,7 @@ public class CurrentDisplay implements Displayable, MyPropertyChangeListener {
     private Double pressure;
     private int humidity;
 
-    CurrentDisplay(){
+    public CurrentDisplay(){
         temperature = 0.0;
         pressure = 0.0;
     }
