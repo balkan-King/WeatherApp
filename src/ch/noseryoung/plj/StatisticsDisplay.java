@@ -98,4 +98,45 @@ public class StatisticsDisplay implements Displayable, MyPropertyChangeListener 
             averageHumidity = currentHumidity;
         }
     }
+
+
+    public Double getMinTemperature() {
+        return minTemperature;
+    }
+
+    public Double getMaxTemperature() {
+        return maxTemperature;
+    }
+
+    public Double getAverageTemperature() {
+        return averageTemperature;
+    }
+
+    public Double getMinPressure() {
+        return minPressure;
+    }
+
+    public Double getMaxPressure() {
+        return maxPressure;
+    }
+
+    public Double getAveragePressure() {
+        return averagePressure;
+    }
+
+    public Integer getMinHumidity() {
+        return minHumidity;
+    }
+
+    public Integer getMaxHumidity() {
+        return maxHumidity;
+    }
+
+    public Integer getAverageHumidity() {
+        return averageHumidity;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
 }

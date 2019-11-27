@@ -1,6 +1,7 @@
 package test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import ch.noseryoung.plj.CurrentData;
 import ch.noseryoung.plj.CurrentDisplay;
@@ -58,8 +59,8 @@ public class CurrentDisplayTest {
     public void generateObject_expectStandardValue(){
         CurrentDisplay currentDisplay = new CurrentDisplay();
 
-        assertEquals(0.0, currentDisplay.getTemperature());
-        assertEquals(0.0, currentDisplay.getPressure());
-        assertEquals(0, currentDisplay.getHumidity());
+        assertNull(currentDisplay.getTemperature());
+        assertNull(currentDisplay.getPressure());
+        assertNull(currentDisplay.getHumidity());
     }
 }
