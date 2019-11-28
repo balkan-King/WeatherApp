@@ -1,30 +1,40 @@
 package ch.noseryoung.plj;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+public class CurrentDisplay implements Displayable, MyPropertyChangeListener {
 
-public class CurrentDisplay implements Displayable, PropertyChangeListener {
+    private Double temperature = null;
+    private Double pressure = null;
+    private Integer humidity = null;
 
-    private Double temperature;
-    private Double pressure;
-    private int humidity;
-
-    CurrentDisplay(){
-        temperature = 0.0;
-        pressure = 0.0;
-    }
 
     @Override
     public void display() {
+        if(temperature != null)
         System.out.println("The current temperature is: " + temperature + " °C\n" +
                 "The current pressure is: " + pressure + " kPa\n" +
                 "The current humidity is: " + humidity + "%\n");
+        else{
+            System.out.println("There are no values set yet");
+        }
     }
 
     @Override
-    public void propertyChange(PropertyChangeEvent evt) {
+    public void update() {
         temperature = CurrentData.getInstance().getCurrentTemperature();
         pressure = CurrentData.getInstance().getCurrentPressure();
         humidity = CurrentData.getInstance().getCurrentHumidity();
     }
+
+    public Double getTemperature() {
+        return temperature;
+    }
+
+    public Double getPressure() {
+        return pressure;
+    }
+
+    public Integer getHumidity() {
+        return humidity;
+    }
+
 }

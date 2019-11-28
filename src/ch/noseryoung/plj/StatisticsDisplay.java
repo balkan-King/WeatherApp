@@ -1,9 +1,6 @@
 package ch.noseryoung.plj;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
-public class StatisticsDisplay implements Displayable, PropertyChangeListener {
+public class StatisticsDisplay implements Displayable, MyPropertyChangeListener {
 
     private Double minTemperature;
     private Double maxTemperature;
@@ -18,15 +15,18 @@ public class StatisticsDisplay implements Displayable, PropertyChangeListener {
 
     @Override
     public void display() {
-        System.out.println("Temperature today:\t\t\tPressure today:\t\t\tHumidity today:\n" +
-                "------------------\t\t\t---------------\n" +
+        if(maxTemperature != null)
+        System.out.println("Temperature today:\t\t\tPressure today:\t\t\t\tHumidity today:\n" +
+                "------------------\t\t\t---------------\t\t\t\t---------------\n" +
                 "minimum: " + minTemperature + " °C\t\t\tminimum: " + minPressure + " kPa\t\t\tminimum: " + minHumidity + "%\n" +
                 "maximum: " + maxTemperature + " °C\t\t\tmaximum: " + maxPressure + " kPa\t\t\tmaximum: " + maxHumidity + "%\n" +
                 "average: " + averageTemperature + " °C\t\t\taverage: " + averagePressure + " kPa\t\t\taverage " + averageHumidity + "%\n");
+        else
+            System.out.println("There are no values set yet");
     }
 
     @Override
-    public void propertyChange(PropertyChangeEvent evt) {
+    public void update() {
         changeTemperature();
         changePressure();
         changeHumidity();
@@ -97,5 +97,46 @@ public class StatisticsDisplay implements Displayable, PropertyChangeListener {
             maxHumidity = currentHumidity;
             averageHumidity = currentHumidity;
         }
+    }
+
+
+    public Double getMinTemperature() {
+        return minTemperature;
+    }
+
+    public Double getMaxTemperature() {
+        return maxTemperature;
+    }
+
+    public Double getAverageTemperature() {
+        return averageTemperature;
+    }
+
+    public Double getMinPressure() {
+        return minPressure;
+    }
+
+    public Double getMaxPressure() {
+        return maxPressure;
+    }
+
+    public Double getAveragePressure() {
+        return averagePressure;
+    }
+
+    public Integer getMinHumidity() {
+        return minHumidity;
+    }
+
+    public Integer getMaxHumidity() {
+        return maxHumidity;
+    }
+
+    public Integer getAverageHumidity() {
+        return averageHumidity;
+    }
+
+    public int getAmount() {
+        return amount;
     }
 }

@@ -1,24 +1,20 @@
 package ch.noseryoung.plj;
 
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 import java.util.Scanner;
 
 public class CurrentData {
     private static Double currentTemperature;
     private static Double currentPressure;
-    private static int currentHumidity;
+    private static Integer currentHumidity;
     private static CurrentData instance;
-    //test
-    private PropertyChangeSupport support;
+    private MyPropertyChangeSupport support = new MyPropertyChangeSupport(); //Observer
 
 
     //constructor
     private CurrentData() {
         currentTemperature = 0.0;
         currentPressure = 0.0;
-        //test
-        support = new PropertyChangeSupport(this);
+        currentHumidity = 0;
     }
     //Singleton
     public static CurrentData getInstance(){
@@ -30,11 +26,11 @@ public class CurrentData {
 
 
     //class functions
-    public void registerPropertyChangeListener(PropertyChangeListener p){
+    public void registerPropertyChangeListener(MyPropertyChangeListener p){
         support.addPropertyChangeListener(p);
     }
 
-    public void removeObserver(PropertyChangeListener p){
+    public void removePropertyChangeListener(MyPropertyChangeListener p){
         support.removePropertyChangeListener(p);
     }
 
@@ -62,7 +58,7 @@ public class CurrentData {
         this.currentTemperature = currentTemperature;
         this.currentPressure = currentPressure;
         this.currentHumidity = currentHumidity;
-        support.firePropertyChange("test", null, null);
+        support.firePropertyChange();
     }
 
 
@@ -79,15 +75,24 @@ public class CurrentData {
         return currentHumidity;
     }
 
+    public MyPropertyChangeSupport getSupport() {
+        return support;
+    }
+
     public void setCurrentTemperature(Double currentTemperature) {
         this.currentTemperature = currentTemperature;
+        support.firePropertyChange();
     }
 
     public void setCurrentPressure(Double currentPressure) {
         this.currentPressure = currentPressure;
+        support.firePropertyChange();
     }
 
     public void setCurrentHumidity(int currentHunmidity) {
         this.currentHumidity = currentHunmidity;
+        support.firePropertyChange();
     }
+
+
 }
