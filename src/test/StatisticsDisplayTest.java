@@ -5,8 +5,7 @@ import ch.noseryoung.plj.CurrentDisplay;
 import ch.noseryoung.plj.StatisticsDisplay;
 import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StatisticsDisplayTest {
 
@@ -16,18 +15,18 @@ public class StatisticsDisplayTest {
         StatisticsDisplay statisticsDisplay = new StatisticsDisplay();
         currentData.registerPropertyChangeListener(statisticsDisplay);
 
-        currentData.measurementsChanged(20.0, 2000.0, 20);
-        currentData.measurementsChanged(10.0, 1000.0, 10);
+        currentData.measurementsChanged();
+        currentData.measurementsChanged();
 
-        assertEquals(10.0, statisticsDisplay.getMinTemperature());
-        assertEquals(20.0, statisticsDisplay.getMaxTemperature());
-        assertEquals(15.0, statisticsDisplay.getAverageTemperature());
-        assertEquals(1000.0, statisticsDisplay.getMinPressure());
-        assertEquals(2000.0, statisticsDisplay.getMaxPressure());
-        assertEquals(1500.0, statisticsDisplay.getAveragePressure());
-        assertEquals(10, statisticsDisplay.getMinHumidity());
-        assertEquals(20, statisticsDisplay.getMaxHumidity());
-        assertEquals(15, statisticsDisplay.getAverageHumidity());
+        assertNotNull(statisticsDisplay.getMinTemperature());
+        assertNotNull(statisticsDisplay.getMaxTemperature());
+        assertNotNull(statisticsDisplay.getAverageTemperature());
+        assertNotNull(statisticsDisplay.getMinPressure());
+        assertNotNull(statisticsDisplay.getMaxPressure());
+        assertNotNull(statisticsDisplay.getAveragePressure());
+        assertNotNull(statisticsDisplay.getMinHumidity());
+        assertNotNull(statisticsDisplay.getMaxHumidity());
+        assertNotNull(statisticsDisplay.getAverageHumidity());
     }
 
     @Test

@@ -21,13 +21,13 @@ public class DisplayController {
                 "[1] to display the current data\n" +
                 "[2] to display the forecast\n" +
                 "[3] to display the statistics for today\n" +
-                "[4] to change the data\n" +
                 "[x] to leave the menu"
         );
     }
 
     public void switchCase(String entry){
         Scanner inputValue = new Scanner(System.in);
+        currentData.measurementsChanged();
 
         switch(entry.toLowerCase()){
             case "1":
@@ -38,9 +38,6 @@ public class DisplayController {
                 break;
             case "3":
                 statisticsDisplay.display();
-                break;
-            case "4":
-                currentData.changeForm();
                 break;
             default:
                 System.out.println("Please enter a valid value");

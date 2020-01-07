@@ -1,6 +1,7 @@
 package test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import ch.noseryoung.plj.CurrentData;
 import ch.noseryoung.plj.CurrentDisplay;
@@ -23,10 +24,10 @@ public class CurrentDataTest{
     @Test
     public void measurementsChanged_requestDummyData_expectDummyData(){
         CurrentData currentData = CurrentData.getInstance();
-        currentData.measurementsChanged(10.0, 1000.0, 10);
-        assertEquals(10.0, currentData.getCurrentTemperature());
-        assertEquals(1000.0, currentData.getCurrentPressure());
-        assertEquals(10, currentData.getCurrentHumidity());
+        currentData.measurementsChanged();
+        assertNotNull(currentData.getCurrentTemperature());
+        assertNotNull(currentData.getCurrentPressure());
+        assertNotNull(currentData.getCurrentHumidity());
     }
 
     @Test
@@ -46,7 +47,7 @@ public class CurrentDataTest{
     @Test
     public void setAndGetHumidity_request25_expect25(){
         CurrentData currentData = CurrentData.getInstance();
-        currentData.setCurrentHumidity(25);
-        assertEquals(25, currentData.getCurrentHumidity());
+        currentData.setCurrentHumidity(25.0);
+        assertEquals(25.0, currentData.getCurrentHumidity());
     }
 }

@@ -1,11 +1,10 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-
 import ch.noseryoung.plj.CurrentData;
 import ch.noseryoung.plj.CurrentDisplay;
 import org.junit.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CurrentDisplayTest {
 
@@ -15,11 +14,11 @@ public class CurrentDisplayTest {
         CurrentDisplay currentDisplay = new CurrentDisplay();
         currentData.registerPropertyChangeListener(currentDisplay);
 
-        currentData.measurementsChanged(20.0, 2000.0, 20);
+        currentData.measurementsChanged();
 
-        assertEquals(20.0, currentDisplay.getTemperature());
-        assertEquals(2000.0, currentDisplay.getPressure());
-        assertEquals(20, currentDisplay.getHumidity());
+        assertNotNull(currentDisplay.getTemperature());
+        assertNotNull(currentDisplay.getPressure());
+        assertNotNull(currentDisplay.getHumidity());
     }
 
     @Test
@@ -50,9 +49,9 @@ public class CurrentDisplayTest {
         CurrentDisplay currentDisplay = new CurrentDisplay();
         currentData.registerPropertyChangeListener(currentDisplay);
 
-        currentData.setCurrentHumidity(20);
+        currentData.setCurrentHumidity(20.0);
 
-        assertEquals(20, currentDisplay.getHumidity());
+        assertEquals(java.util.Optional.of(20.0), currentDisplay.getHumidity());
     }
 
     @Test

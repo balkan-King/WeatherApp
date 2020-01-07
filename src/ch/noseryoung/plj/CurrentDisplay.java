@@ -4,7 +4,7 @@ public class CurrentDisplay implements Displayable, MyPropertyChangeListener {
 
     private Double temperature = null;
     private Double pressure = null;
-    private Integer humidity = null;
+    private Double humidity = null;
 
 
     @Override
@@ -33,7 +33,7 @@ public class CurrentDisplay implements Displayable, MyPropertyChangeListener {
         return pressure;
     }
 
-    public Integer getHumidity() {
+    public Double getHumidity() {
         return humidity;
     }
 

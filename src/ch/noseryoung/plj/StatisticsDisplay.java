@@ -8,9 +8,9 @@ public class StatisticsDisplay implements Displayable, MyPropertyChangeListener 
     private Double minPressure;
     private Double maxPressure;
     private Double averagePressure;
-    Integer minHumidity;
-    Integer maxHumidity;
-    Integer averageHumidity;
+    private Double minHumidity;
+    private Double maxHumidity;
+    private Double averageHumidity;
     int amount = 1;
 
     @Override
@@ -18,9 +18,9 @@ public class StatisticsDisplay implements Displayable, MyPropertyChangeListener 
         if(maxTemperature != null)
         System.out.println("Temperature today:\t\t\tPressure today:\t\t\t\tHumidity today:\n" +
                 "------------------\t\t\t---------------\t\t\t\t---------------\n" +
-                "minimum: " + minTemperature + " °C\t\t\tminimum: " + minPressure + " kPa\t\t\tminimum: " + minHumidity + "%\n" +
+                "minimum: " + minTemperature + " °C\t\t\t\tminimum: " + minPressure + " kPa\t\t\tminimum: " + minHumidity + "%\n" +
                 "maximum: " + maxTemperature + " °C\t\t\tmaximum: " + maxPressure + " kPa\t\t\tmaximum: " + maxHumidity + "%\n" +
-                "average: " + averageTemperature + " °C\t\t\taverage: " + averagePressure + " kPa\t\t\taverage " + averageHumidity + "%\n");
+                "average: " + averageTemperature + " °C\t\t\t\taverage: " + averagePressure + " kPa\t\t\taverage " + averageHumidity + "%\n");
         else
             System.out.println("There are no values set yet");
     }
@@ -47,7 +47,7 @@ public class StatisticsDisplay implements Displayable, MyPropertyChangeListener 
                 newAverage += averageTemperature;
             }
             newAverage += currentTemp;
-            averageTemperature = newAverage / amount;
+            averageTemperature = (double) Math.round(newAverage / amount*10)/10;
         }catch(NullPointerException e){
             minTemperature = currentTemp;
             maxTemperature = currentTemp;
@@ -79,7 +79,7 @@ public class StatisticsDisplay implements Displayable, MyPropertyChangeListener 
 
     private void changeHumidity(){
         int newAverage = 0;
-        int currentHumidity = CurrentData.getInstance().getCurrentHumidity();
+        Double currentHumidity = CurrentData.getInstance().getCurrentHumidity();
 
         try {
             if (currentHumidity > maxHumidity)
@@ -91,7 +91,7 @@ public class StatisticsDisplay implements Displayable, MyPropertyChangeListener 
                 newAverage += averageHumidity;
             }
             newAverage += currentHumidity;
-            averageHumidity = newAverage / amount;
+            averageHumidity = newAverage / (double) amount;
         }catch(NullPointerException e){
             minHumidity = currentHumidity;
             maxHumidity = currentHumidity;
@@ -124,15 +124,15 @@ public class StatisticsDisplay implements Displayable, MyPropertyChangeListener 
         return averagePressure;
     }
 
-    public Integer getMinHumidity() {
+    public Double getMinHumidity() {
         return minHumidity;
     }
 
-    public Integer getMaxHumidity() {
+    public Double getMaxHumidity() {
         return maxHumidity;
     }
 
-    public Integer getAverageHumidity() {
+    public Double getAverageHumidity() {
         return averageHumidity;
     }
 
